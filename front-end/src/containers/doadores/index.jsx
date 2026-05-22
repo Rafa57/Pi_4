@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import api from '../../services/api'
 
 function Doadores() {
@@ -17,47 +19,33 @@ function Doadores() {
         })
     }, []);
 
-    // const addDoador = () => {
-    //     let novoDoador = {
-    //         name: 'Jorge',
-    //         idade: 25,
-    //         email: 'jorge@email.com',
-    //         valor: 320.00
-    //     }
-
-    //     api.post('doadores/', novoDoador)
-    //     .then(response => {console.log('Doador cadastrado com sucesso!', response.data)})
-    //     .catch(error => {console.error('Erro ao cadastrar', error)})
-    // };
-
     return (
         <div style={{ padding: '20px' }}>
 
             <h1>Doadores</h1>
-            
+            <button onClick={() => navigate('/')}>Home</button>
+
             <nav style={{marginBottom: '16px'}}>
-                {/* <button onClick={addDoador}>Cadastrar Doador</button> */}
-                <button onClick={() => navigate('/doadores/add')}>2 cadastrar doador</button>
+                <button onClick={() => navigate('/doadores/add')}>Cadastrar Doador</button>
             </nav>
 
             {erro && <p style={{color: 'white', backgroundColor: 'red', border: '2px solid darkred'}}>
                 {erro} 
             </p>}
 
-            <table className='lista-doadores' style={{border: '1px solid black'}}>
-                <ul style={{border: '1px solid red'}}>
-                    {doadores.map(doador => (
-                        <a href="" style={{textDecoration: 'none', color: 'black'}}>
-                            <li style={{listStyleType: 'none', padding: '6px', border: '1px solid green'}}>
-                                <strong>ID:</strong> {doador.id} | <strong>Nome:</strong> {doador.name} | <strong>Idade:</strong> {doador.idade} | <strong>E-mail:</strong> {doador.email} | <strong>Valor:</strong> {doador.valor}
-                            </li>
-                        </a>
-                    ))}
-                </ul>
-            </table>
-            
+            <ul style={{ listStyle: 'none'}}>
+                {doadores.map(doador => (
+                    <li key={doador.id} style={{ border: '1px solid green', marginBottom: '8px'}}>
+                        
+                        <Link to={`/doadores/${doador.id}`} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '6px' }}>
+                            <strong>Nome:</strong> {doador.name} | <strong>Valor:</strong> {doador.valor}
+                        </Link>
+                        
+                    </li>
+                ))}
+            </ul> 
         </div>
     )
-}
+};
 
 export default Doadores
