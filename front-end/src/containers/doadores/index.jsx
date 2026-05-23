@@ -33,17 +33,39 @@ function Doadores() {
                 {erro} 
             </p>}
 
-            <ul style={{ listStyle: 'none'}}>
+            {/* <ul style={{ listStyle: 'none'}}>
                 {doadores.map(doador => (
-                    <li key={doador.id} style={{ border: '1px solid green', marginBottom: '8px'}}>
+                    <li key={doador.id} className='d-inline p-2'>
                         
                         <Link to={`/doadores/${doador.id}`} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '6px' }}>
                             <strong>Nome:</strong> {doador.name} | <strong>Valor:</strong> {doador.valor}
-                        </Link>
+                        </Link> <button onClick={() => navigate(`/doadores/${doador.id}`)}>Detalhes</button>
                         
                     </li>
                 ))}
-            </ul> 
+            </ul> */}
+
+            <table className="table w-auto">
+                <thead className="bg-secondary">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {doadores.map(doador => (
+                        <tr key={doador.id}>
+                            <td> {doador.id} </td>
+                            <td> {doador.name} </td>
+                            <td> {doador.valor} </td>
+                            <td><button onClick={() => navigate(`/doadores/${doador.id}`)} type='button' className='btn btn-outline-info'>Detalhes</button>  <button type='button' className='btn btn-outline-danger'>Deletar</button></td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 };

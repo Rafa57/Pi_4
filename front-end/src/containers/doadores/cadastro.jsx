@@ -35,9 +35,9 @@ function Cadastro() {
         <div style={{padding: '20px', maxWidth: '500px'}}>
             <button onClick={() => navigate('/doadores')}>Lista de doadores</button>
 
-            <form onSubmit={addDoador} method="post">
+            <form onSubmit={addDoador} method="post" className="form-control">
 
-                <label htmlFor="nome">Nome: </label><br />
+                <label htmlFor="nome" className="form-label">Nome: </label><br />
                 <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} required />
                 <br />
                 
