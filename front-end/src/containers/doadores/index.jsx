@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import api from '../../services/api'
+import api from '../../services/api';
+import './style.css';
 
 function Doadores() {
     const navigate = useNavigate();
@@ -22,12 +23,15 @@ function Doadores() {
     return (
         <div style={{ padding: '20px' }}>
 
-            <h1>Doadores</h1>
-            <button onClick={() => navigate('/')}>Home</button>
-
-            <nav style={{marginBottom: '16px'}}>
-                <button onClick={() => navigate('/doadores/add')}>Cadastrar Doador</button>
-            </nav>
+            <header className='header' >
+                <h1 style={{display:'flex', alignItems:'center'}}>
+                    <Link to={`/`} style={{textDecoration: 'none', color: 'black', fontSize: '20px'}}>{'<voltar/'}</Link>
+                    Doadores
+                </h1>
+                {/* <nav className='nav'>
+                    <button onClick={() => navigate('/')}>Home</button>
+                </nav> */}
+            </header>
 
             {erro && <p style={{color: 'white', backgroundColor: 'red', border: '2px solid darkred'}}>
                 {erro} 
@@ -45,27 +49,48 @@ function Doadores() {
                 ))}
             </ul> */}
 
-            <table className="table w-auto">
-                <thead className="bg-secondary">
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Valor</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {doadores.map(doador => (
-                        <tr key={doador.id}>
-                            <td> {doador.id} </td>
-                            <td> {doador.name} </td>
-                            <td> {doador.valor} </td>
-                            <td><button onClick={() => navigate(`/doadores/${doador.id}`)} type='button' className='btn btn-outline-info'>Detalhes</button>  <button type='button' className='btn btn-outline-danger'>Deletar</button></td>
+            <div className='mt-5 p-3'>
+                <nav className='mb-2'>
+                    <button onClick={() => navigate('/doadores/add')} className='btn btn-md btn-primary' style={{}}>Cadastrar Doador</button>
+                </nav>
+                <table className="table table-hover table-bordered">
+                    <thead className="text-center sticky-top" style={{backgroundColor: '#2d8c99', color:'red'}}>
+                        <tr>
+                            <th scope="col" style={{backgroundColor: '#2d8c99', color: '#fff'}}>ID</th>
+                            <th scope="col" style={{backgroundColor: '#2d8c99', color: '#fff'}}>Nome</th>
+                            <th scope="col" style={{backgroundColor: '#2d8c99', color: '#fff'}}>Valor</th>
+                            {/* <th scope="col">Controle</th> */}
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {doadores.map(doador => (
+                            <tr key={doador.id} onClick={() => navigate(`/doadores/${doador.id}`)} style={{cursor: 'pointer'}} className='table-hover-custom'>
+                                <td> {doador.id} </td>
+                                <td> {doador.name} </td>
+                                <td> {doador.valor} </td>
+                            </tr>
+                        ))}
+                        {doadores.map(doador => (
+                            <tr key={doador.id} onClick={() => navigate(`/doadores/${doador.id}`)} style={{cursor: 'pointer'}} className='table-hover-custom'>
+                                <td> {doador.id} </td>
+                                <td> {doador.name} </td>
+                                <td> {doador.valor} </td>
+                            </tr>
+                        ))}
+                        {/* {doadores.map(doador => (
+                            <tr key={doador.id}>
+                                <td> {doador.id} </td>
+                                <td> {doador.name} </td>
+                                <td> {doador.valor} </td>
+                                <td className='d-flex justify-content-center gap-2'>
+                                    <button onClick={() => navigate(`/doadores/${doador.id}`)} type='button' className='btn btn-outline-info btn-sm'>Detalhes</button>
+                                    <button type='button' className='btn btn-outline-danger btn-sm'>Deletar</button>
+                                </td>
+                            </tr>
+                        ))}  */}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 };
