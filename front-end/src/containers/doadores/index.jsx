@@ -20,6 +20,11 @@ function Doadores() {
         })
     }, []);
 
+    const [checkBox, setCheckBox] = useState(false);
+    function ex_select() {
+        setCheckBox(true);
+    }
+
     return (
         <div style={{ padding: '20px' }}>
 
@@ -50,9 +55,12 @@ function Doadores() {
             </ul> */}
 
             <div className='mt-5 p-3'>
-                <nav className='mb-2'>
-                    <button onClick={() => navigate('/doadores/add')} className='btn btn-md btn-primary' style={{}}>Cadastrar Doador</button>
+                <nav className='mb-2 d-flex gap-2 sticky-top'>
+                    <button onClick={() => navigate('/doadores/add')} className='btn btn-md btn-primary'>Cadastrar Doador</button>
+                    
+                    <button id='delete_btn' className='btn' onClick={ex_select}><img src="../../public/btn_delete.svg" alt="Excluir doador"/></button>
                 </nav>
+
                 <table className="table table-hover table-bordered">
                     <thead className="text-center sticky-top" style={{backgroundColor: '#2d8c99', color:'red'}}>
                         <tr>
@@ -67,16 +75,22 @@ function Doadores() {
                             <tr key={doador.id} onClick={() => navigate(`/doadores/${doador.id}`)} style={{cursor: 'pointer'}} className='table-hover-custom'>
                                 <td> {doador.id} </td>
                                 <td> {doador.name} </td>
-                                <td> {doador.valor} </td>
+                                <td> R$ {doador.valor} </td>
                             </tr>
                         ))}
                         {doadores.map(doador => (
                             <tr key={doador.id} onClick={() => navigate(`/doadores/${doador.id}`)} style={{cursor: 'pointer'}} className='table-hover-custom'>
-                                <td> {doador.id} </td>
+                                <td> 
+                                    {checkBox && (
+                                        <input className='i-check' type="checkbox"/>
+                                    )}
+                                    {doador.id} 
+                                </td>
                                 <td> {doador.name} </td>
                                 <td> {doador.valor} </td>
                             </tr>
                         ))}
+                        
                         {/* {doadores.map(doador => (
                             <tr key={doador.id}>
                                 <td> {doador.id} </td>
@@ -88,9 +102,12 @@ function Doadores() {
                                 </td>
                             </tr>
                         ))}  */}
+
                     </tbody>
                 </table>
+                
             </div>
+            
         </div>
     )
 };

@@ -1,3 +1,21 @@
 .table-hover tbody tr:hover td{
-    background-color: #f0fffb !important;
+    background-color: #e9f8f5 !important;
+}
+
+.btn-primary {
+    color: #fff;
+    border: 2px solid #2d8c99;
+    background-color: #2d8c99;
+}
+.btn-primary:hover {
+    border: 2px solid #2d8c99;
+    background-color: #4bb7c5;
+}
+#delete_btn {
+    background-color: #b62727;
+}
+
+.i-check {
+    margin: 0px 16px 0px 16px;
+    transform: scale(1.3);
 }
