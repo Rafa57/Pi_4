@@ -1,18 +1,38 @@
-.table-hover tbody tr:hover td{
-    background-color: #e9f8f5 !important;
+:root {
+    --primaria: #ffffff;
+    --secundaria: #3a80e6;
+    --tres: #e6eef8;
+    --quatro: #2b3a55;
+    --cinco: #00b3c6;
 }
 
-.btn-primary {
-    color: #fff;
-    border: 2px solid #2d8c99;
-    background-color: #2d8c99;
+thead {
+    border-collapse: collapse !important;
+    
 }
-.btn-primary:hover {
-    border: 2px solid #2d8c99;
-    background-color: #4bb7c5;
+th {
+    background-color: var(--secundaria) !important;
+    border-color: #ffffff !important;
+    color: #fff !important;
 }
-#delete_btn {
-    background-color: #b62727;
+
+.table-hover tbody tr:hover td{
+    background-color: var(--tres) !important;
+}
+
+.btn {
+    background-color: var(--quatro);
+    border: 2px solid transparent;
+}
+
+.btn:hover {
+    background-color: var(--quatro);
+    border: 2px solid var(--tres);
+}
+
+.btn:active {
+    background-color: var(--secundaria) !important;
+    border: 2px solid var(--tres) !important;
 }
 
 .i-check {

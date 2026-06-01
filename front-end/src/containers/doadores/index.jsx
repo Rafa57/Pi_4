@@ -21,8 +21,11 @@ function Doadores() {
     }, []);
 
     const [checkBox, setCheckBox] = useState(false);
+    const [cancel, setCancel] = useState(false);
     function ex_select() {
         setCheckBox(true);
+        setCancel(true);
+
     }
 
     return (
@@ -55,19 +58,32 @@ function Doadores() {
             </ul> */}
 
             <div className='mt-5 p-3'>
-                <nav className='mb-2 d-flex gap-2 sticky-top'>
+                {/* <nav className='mb-2 d-flex gap-2 sticky-top'>
                     <button onClick={() => navigate('/doadores/add')} className='btn btn-md btn-primary'>Cadastrar Doador</button>
                     
                     <button id='delete_btn' className='btn' onClick={ex_select}><img src="../../public/btn_delete.svg" alt="Excluir doador"/></button>
-                </nav>
+                </nav> */}
 
                 <table className="table table-hover table-bordered">
-                    <thead className="text-center sticky-top" style={{backgroundColor: '#2d8c99', color:'red'}}>
+                    <thead className="text-center sticky-top bg-white">
                         <tr>
-                            <th scope="col" style={{backgroundColor: '#2d8c99', color: '#fff'}}>ID</th>
-                            <th scope="col" style={{backgroundColor: '#2d8c99', color: '#fff'}}>Nome</th>
-                            <th scope="col" style={{backgroundColor: '#2d8c99', color: '#fff'}}>Valor</th>
-                            {/* <th scope="col">Controle</th> */}
+                            <th colSpan={3} className='p-0 border-0'>
+                                <nav className='m-2 d-flex gap-2 col-12'>
+                                    
+                                    <button onClick={() => navigate('/doadores/add')} className='btn btn-md btn-primary'><img src="../../public/btn_add.svg" alt="" /></button>
+                                
+                                    <button id='delete_btn' className='btn' onClick={ex_select}><img src="../../public/btn_delete.svg" alt="Excluir doador"/></button>
+                                </nav>
+                                {cancel && (
+                                    <button className='btn btn-primary btn-sm'>Cancelar seleção</button>
+                                )}
+                            </th>
+                        </tr>
+                        
+                        <tr className='col'>
+                            <th scope="col" style={{width: '30%'}}>ID</th>
+                            <th scope="col" style={{width: '45%'}}>Nome</th>
+                            <th scope="col" style={{width: '25%'}}>Valor</th>
                         </tr>
                     </thead>
                     <tbody>
