@@ -22,10 +22,20 @@ function Doadores() {
 
     const [checkBox, setCheckBox] = useState(false);
     const [cancel, setCancel] = useState(false);
-    function ex_select() {
-        setCheckBox(true);
-        setCancel(true);
+    const [selecao, setSelecao] = useState(false);
 
+    function ex_select() {
+        setCheckBox(true)
+        setCancel(true);
+        setSelecao(true);
+    }
+    function mudancaCheck(e){
+        setCheckBox(e.target.checked);
+    }
+    function selCancel() {
+        setCheckBox(false)
+        setCancel(false)
+        setSelecao(false)
     }
 
     return (
@@ -33,50 +43,38 @@ function Doadores() {
 
             <header className='header' >
                 <h1 style={{display:'flex', alignItems:'center'}}>
-                    <Link to={`/`} style={{textDecoration: 'none', color: 'black', fontSize: '20px'}}>{'<voltar/'}</Link>
+                    <Link to={`/`} style={{textDecoration: 'none', color: 'black', fontSize: '20px', margin:'6px'}}>{'<voltar /'}</Link>
                     Doadores
                 </h1>
-                {/* <nav className='nav'>
-                    <button onClick={() => navigate('/')}>Home</button>
-                </nav> */}
             </header>
 
             {erro && <p style={{color: 'white', backgroundColor: 'red', border: '2px solid darkred'}}>
                 {erro} 
             </p>}
 
-            {/* <ul style={{ listStyle: 'none'}}>
-                {doadores.map(doador => (
-                    <li key={doador.id} className='d-inline p-2'>
-                        
-                        <Link to={`/doadores/${doador.id}`} style={{ textDecoration: 'none', color: 'black', display: 'block', padding: '6px' }}>
-                            <strong>Nome:</strong> {doador.name} | <strong>Valor:</strong> {doador.valor}
-                        </Link> <button onClick={() => navigate(`/doadores/${doador.id}`)}>Detalhes</button>
-                        
-                    </li>
-                ))}
-            </ul> */}
-
             <div className='mt-5 p-3'>
-                {/* <nav className='mb-2 d-flex gap-2 sticky-top'>
-                    <button onClick={() => navigate('/doadores/add')} className='btn btn-md btn-primary'>Cadastrar Doador</button>
-                    
-                    <button id='delete_btn' className='btn' onClick={ex_select}><img src="../../public/btn_delete.svg" alt="Excluir doador"/></button>
-                </nav> */}
 
                 <table className="table table-hover table-bordered">
                     <thead className="text-center sticky-top bg-white">
                         <tr>
-                            <th colSpan={3} className='p-0 border-0'>
-                                <nav className='m-2 d-flex gap-2 col-12'>
+                            <th colSpan={3} className='p-0'>
+                                <nav className='m-2 d-flex gap-1 col-12'>
                                     
-                                    <button onClick={() => navigate('/doadores/add')} className='btn btn-md btn-primary'><img src="../../public/btn_add.svg" alt="" /></button>
+                                    <button onClick={() => navigate('/doadores/add')} className='btn btn-md btn-primary m-1'><img src="/btn_add.svg" alt="Adicionar" /></button>
                                 
-                                    <button id='delete_btn' className='btn' onClick={ex_select}><img src="../../public/btn_delete.svg" alt="Excluir doador"/></button>
+                                    <button id='delete_btn' className='btn m-1' onClick={ex_select}><img src="/btn_delete.svg" alt="Excluir doador"/></button>
                                 </nav>
-                                {cancel && (
-                                    <button className='btn btn-primary btn-sm'>Cancelar seleção</button>
-                                )}
+
+                                <nav className='d-inline'>
+                                    {cancel && (
+                                        <button className='btn btn-primary m-2'>Limpar Seleção</button>
+                                    )}
+                                    {selecao && (
+                                        <button className='btn btn-primary btn-sm' onClick={selCancel}>
+                                            <img src="/btn_cancel.svg" alt="Cancelar seleção" />
+                                        </button>
+                                    )}
+                                </nav>
                             </th>
                         </tr>
                         
@@ -87,37 +85,29 @@ function Doadores() {
                         </tr>
                     </thead>
                     <tbody>
+
                         {doadores.map(doador => (
-                            <tr key={doador.id} onClick={() => navigate(`/doadores/${doador.id}`)} style={{cursor: 'pointer'}} className='table-hover-custom'>
-                                <td> {doador.id} </td>
-                                <td> {doador.name} </td>
-                                <td> R$ {doador.valor} </td>
-                            </tr>
-                        ))}
-                        {doadores.map(doador => (
-                            <tr key={doador.id} onClick={() => navigate(`/doadores/${doador.id}`)} style={{cursor: 'pointer'}} className='table-hover-custom'>
-                                <td> 
-                                    {checkBox && (
-                                        <input className='i-check' type="checkbox"/>
-                                    )}
-                                    {doador.id} 
+                            <tr key={doador.id} onClick={() => navigate(`/doadores/${doador.id}`)} style={{cursor: 'pointer'}} className='align-middle'>
+                                
+                                <td className='i-check'> 
+                                    <tr>
+                                        {checkBox && (
+                                            <input 
+                                                id='box' 
+                                                className='form-check-input' type="checkbox" onClick={(e) => {
+                                                    mudancaCheck
+                                                    e.stopPropagation()
+                                                }}
+                                            />
+                                        )}
+                                    </tr>
+                                    <tr>{doador.id}</tr>
                                 </td>
+                                
                                 <td> {doador.name} </td>
                                 <td> {doador.valor} </td>
                             </tr>
                         ))}
-                        
-                        {/* {doadores.map(doador => (
-                            <tr key={doador.id}>
-                                <td> {doador.id} </td>
-                                <td> {doador.name} </td>
-                                <td> {doador.valor} </td>
-                                <td className='d-flex justify-content-center gap-2'>
-                                    <button onClick={() => navigate(`/doadores/${doador.id}`)} type='button' className='btn btn-outline-info btn-sm'>Detalhes</button>
-                                    <button type='button' className='btn btn-outline-danger btn-sm'>Deletar</button>
-                                </td>
-                            </tr>
-                        ))}  */}
 
                     </tbody>
                 </table>
