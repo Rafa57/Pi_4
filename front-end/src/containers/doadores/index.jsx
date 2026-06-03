@@ -24,19 +24,61 @@ function Doadores() {
     const [cancel, setCancel] = useState(false);
     const [selecao, setSelecao] = useState(false);
 
-    function ex_select() {
+    function menuSelect() {
         setCheckBox(true)
         setCancel(true);
         setSelecao(true);
     }
-    function mudancaCheck(e){
-        setCheckBox(e.target.checked);
-    }
+    
     function selCancel() {
-        setCheckBox(false)
-        setCancel(false)
-        setSelecao(false)
+        setCheckBox(false);
+        setCancel(false);
+        setSelecao(false);
+        setListaSel([]);
     }
+
+    const [listaSel, setListaSel] = useState([]);
+
+    const selecionados = (id, checado) => {
+        if(checado) {
+            setListaSel([...listaSel, id]);
+        } else {
+            setListaSel(listaSel.filter(item => item != id));
+        }
+    };
+
+    const delSelect = async () => {
+        if(listaSel.length === 0) {
+            alert('Selecione um doador para deletar')
+            return;
+        }
+
+        const confirmDel = window.confirm(`Tem certeza que deseja excluir ${listaSel.length} doadores?:`);
+
+        if(confirmDel) {
+            try {
+                await Promise.all(
+                    listaSel.map(id => api.delete(`doadores/${id}/`))
+                );
+                alert('Doadores excluidos com sucesso!');
+                setListaSel([]);
+                selCancel();
+                window.location.reload();
+            } catch (erro) {
+                console.error('Erro ao excluir doador(es):', erro);
+                alert('Houve um erro ao tentar excluir alguns registros.');
+            }
+        }
+    };
+
+    const cliqueNaLinha = (doadorId) => {
+        if(checkBox) {
+            const jaSelecionado = listaSel.includes(doadorId);
+            selecionados(doadorId, !jaSelecionado);
+        } else {
+            navigate(`/doadores/${doadorId}`);
+        }
+    };
 
     return (
         <div style={{ padding: '20px' }}>
@@ -48,7 +90,7 @@ function Doadores() {
                 </h1>
             </header>
 
-            {erro && <p style={{color: 'white', backgroundColor: 'red', border: '2px solid darkred'}}>
+            {erro && <p className='alert alert-danger'>
                 {erro} 
             </p>}
 
@@ -58,22 +100,24 @@ function Doadores() {
                     <thead className="text-center sticky-top bg-white">
                         <tr>
                             <th colSpan={3} className='p-0'>
-                                <nav className='m-2 d-flex gap-1 col-12'>
+                                <nav className='m-2 mb-0 d-flex gap-1 col-12'>
                                     
                                     <button onClick={() => navigate('/doadores/add')} className='btn btn-md btn-primary m-1'><img src="/btn_add.svg" alt="Adicionar" /></button>
                                 
-                                    <button id='delete_btn' className='btn m-1' onClick={ex_select}><img src="/btn_delete.svg" alt="Excluir doador"/></button>
+                                    <button id='delete_btn' className='btn m-1' onClick={menuSelect}><img src="/btn_delete.svg" alt="Excluir doador"/></button>
                                 </nav>
 
-                                <nav className='d-inline'>
-                                    {cancel && (
-                                        <button className='btn btn-primary m-2'>Limpar Seleção</button>
-                                    )}
+                                <nav className='d-flex gap-1 align-items-left ms-2 mb-2'>
                                     {selecao && (
-                                        <button className='btn btn-primary btn-sm' onClick={selCancel}>
+                                        <button className='btn btn-primary btn-sm m-1' onClick={selCancel}>
                                             <img src="/btn_cancel.svg" alt="Cancelar seleção" />
                                         </button>
                                     )}
+                                    {cancel && (
+                                        <button className='btn btn-primary m-1' onClick={delSelect} style={{ opacity: selecionados.length > 0 ? 1 : 0.5 }}>Excluir selecionado(s)</button>
+                                    )}
+
+                                    {listaSel.length > 0 && <span id='qtd-sel' className='text-muted m-1'>{listaSel.length}</span>}
                                 </nav>
                             </th>
                         </tr>
@@ -84,24 +128,32 @@ function Doadores() {
                             <th scope="col" style={{width: '25%'}}>Valor</th>
                         </tr>
                     </thead>
+
                     <tbody>
 
                         {doadores.map(doador => (
-                            <tr key={doador.id} onClick={() => navigate(`/doadores/${doador.id}`)} style={{cursor: 'pointer'}} className='align-middle'>
+                            <tr 
+                                key={doador.id} 
+                                onClick={() => cliqueNaLinha(doador.id)} 
+                                style={{cursor: 'pointer'}} 
+                                className='align-middle'
+                            >
                                 
-                                <td className='i-check'> 
-                                    <tr>
+                                <td className='i-check'>
+                                    <div>
                                         {checkBox && (
-                                            <input 
-                                                id='box' 
-                                                className='form-check-input' type="checkbox" onClick={(e) => {
-                                                    mudancaCheck
-                                                    e.stopPropagation()
-                                                }}
+                                            <input
+                                                type="checkbox"
+                                                id='box'
+                                                className='form-check-input'
+                                                checked={listaSel.includes(doador.id)}
+                                                onChange={(e) => selecionados(doador.id, e.target.checked)}
+                                                onClick={(e) => e.stopPropagation()}
                                             />
                                         )}
-                                    </tr>
-                                    <tr>{doador.id}</tr>
+
+                                        <span>{doador.id}</span>
+                                    </div>
                                 </td>
                                 
                                 <td> {doador.name} </td>
