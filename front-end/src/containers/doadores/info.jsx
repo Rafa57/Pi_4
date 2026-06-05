@@ -38,10 +38,10 @@ function Info() {
     };
 
     return (
-        <div style={{padding: '20px'}}>
+        <div id="info" style={{padding: '20px'}}>
 
-            <header className="d-flex align-items">
-                <Link to={'/doadores'} style={{textDecoration: 'none', color: '#666', fontSize: '20px', margin:'6px'}}>{'<voltar /'}</Link>
+            <header>
+                <Link to={'/doadores'} id="ficha-back" style={{textDecoration: 'none', color: '#666', fontSize: '20px', margin:'6px'}}>{'<voltar /'}</Link>
                 <h2>Ficha do doador</h2>
             </header>
 

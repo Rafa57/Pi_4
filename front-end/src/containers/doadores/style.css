@@ -7,6 +7,26 @@
     --cinza1: #666;
     --cinza2: #444;
 }
+/* HOME */
+#home nav{
+    background-color: var(--azul3) !important;
+}
+#home h1 {
+    color: var(--branco);
+}
+#logo-dg {
+    width: 5em;
+}
+#rodape {
+    display: flex;
+    justify-content: end;
+}
+#back-top {
+    margin-left: 100%;
+}
+#home nav button {
+    background-color: var(--azul1);
+}
 
 /* LISTA DE DOADORES */
 thead {
@@ -63,7 +83,10 @@ th {
 }
 
 /* FICHA DO DOADOR */
-
+#info header {
+    display: flex;
+    align-items: center;
+}
 .card {
     background-color: var(--azul2);
     border: 1px solid var(--primaria);
