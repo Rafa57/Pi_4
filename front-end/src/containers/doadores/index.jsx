@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 
 import api from '../../services/api';
 import './style.css';
@@ -83,9 +83,9 @@ function Doadores() {
     return (
         <div style={{ padding: '20px' }}>
 
-            <header className='header' >
+            <header className='header d-flex align-items' >
                 <h1 style={{display:'flex', alignItems:'center'}}>
-                    <Link to={`/`} style={{textDecoration: 'none', color: 'black', fontSize: '20px', margin:'6px'}}>{'<voltar /'}</Link>
+                    <Link to={`/`} style={{textDecoration: 'none', color: '#666', fontSize: '20px', margin:'6px'}}>{'<voltar /'}</Link>
                     Doadores
                 </h1>
             </header>
@@ -94,7 +94,7 @@ function Doadores() {
                 {erro} 
             </p>}
 
-            <div className='mt-5 p-3'>
+            <div className='mt-2 p-3 col-xl-6'>
 
                 <table className="table table-hover table-bordered">
                     <thead className="text-center sticky-top bg-white">
@@ -109,7 +109,7 @@ function Doadores() {
 
                                 <nav className='d-flex gap-1 align-items-left ms-2 mb-2'>
                                     {selecao && (
-                                        <button className='btn btn-primary btn-sm m-1' onClick={selCancel}>
+                                        <button id='btn-cancel' className='btn btn-primary btn-sm m-1' onClick={selCancel}>
                                             <img src="/btn_cancel.svg" alt="Cancelar seleção" />
                                         </button>
                                     )}

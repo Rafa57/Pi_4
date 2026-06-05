@@ -1,38 +1,41 @@
 :root {
-    --primaria: #ffffff;
-    --secundaria: #3a80e6;
-    --tres: #e6eef8;
-    --quatro: #2b3a55;
-    --cinco: #00b3c6;
+    --branco: #ffffff;
+    --azul1: #3a80e6;
+    --azul2: #e6eef8;
+    --azul3: #2b3a55;
+    --azul4: #00b3c6;
+    --cinza1: #666;
+    --cinza2: #444;
 }
 
+/* LISTA DE DOADORES */
 thead {
     border-collapse: collapse !important;
     
 }
 th {
-    background-color: var(--secundaria) !important;
+    background-color: var(--azul1) !important;
     border-color: #ffffff !important;
     color: #fff !important;
 }
 
 .table-hover tbody tr:hover td{
-    background-color: var(--tres) !important;
+    background-color: var(--azul2) !important;
 }
 
 .btn {
-    background-color: var(--quatro);
+    background-color: var(--azul3);
     border: 2px solid transparent;
 }
 
 .btn:hover {
-    background-color: var(--quatro);
-    border: 2px solid var(--tres);
+    background-color: var(--azul3);
+    border: 2px solid var(--azul2);
 }
 
 .btn:active {
-    background-color: var(--secundaria) !important;
-    border: 2px solid var(--tres) !important;
+    background-color: var(--azul1) !important;
+    border: 2px solid var(--azul2) !important;
 }
 
 .i-check {
@@ -48,10 +51,61 @@ th {
     display: inline;
     align-self: center;
     color: var(--primaria) !important;
-    background-color: var(--quatro) !important;
+    background-color: var(--azul3) !important;
     border-radius: 6px;
     padding: 1%;
     width: 5%;
     max-width: 50px;
     max-height: 50px;
+}
+#btn-cancel {
+    width: 52px;
+}
+
+/* FICHA DO DOADOR */
+
+.card {
+    background-color: var(--azul2);
+    border: 1px solid var(--primaria);
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+#card-id {
+    color: var(--cinza1);
+    font-size: .9em;
+}
+.card h2 {
+    color: var(--azul3);
+    font-size: 1.5em;
+}
+.card hr {
+    color: var(--azul3);
+}
+.card-info h3 {
+    color: var(--azul3);
+    font-size: 1.3em;
+}
+.card p {
+    color: var(--cinza2);
+}
+.card-btn {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+.card button {
+    color: var(--branco);
+    background-color: var(--azul1);
+}
+.card button:hover {
+    background-color: var(--branco);
+    border-color: var(--azul3);
+}
+select {
+    padding: 1.5px;
+    color: var(--azul3);
+    background-color: transparent;
+    cursor: pointer;
+    transition: .2s ease;
 }

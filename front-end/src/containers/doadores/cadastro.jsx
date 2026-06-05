@@ -33,7 +33,7 @@ function Cadastro() {
     
     return (
         <div style={{padding: '20px', maxWidth: '500px'}}>
-            <button onClick={() => navigate('/doadores')}>Lista de doadores</button>
+            <button className='btn btn-primary m-2 ms-0' onClick={() => navigate('/doadores')}>Lista de doadores</button>
 
             <form onSubmit={addDoador} method="post" className="form-control">
 

@@ -1,6 +1,8 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import {useState, useEffect} from 'react'
 import api from '../../services/api'
+
+import './style.css'
 
 function Info() {
     const {id} = useParams();
@@ -36,28 +38,47 @@ function Info() {
     };
 
     return (
-        <div>
-            <button onClick={() => navigate('/doadores')}>Voltar</button>
-            <h2>Ficha do doador</h2>
+        <div style={{padding: '20px'}}>
 
-            <nav>
-                <button>teste</button>
-            </nav>
-            <section id="ficha" style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '5px', marginTop: '15px'}}>
-                <h3>ID</h3>
-                <p>{doador.id}</p>
+            <header className="d-flex align-items">
+                <Link to={'/doadores'} style={{textDecoration: 'none', color: '#666', fontSize: '20px', margin:'6px'}}>{'<voltar /'}</Link>
+                <h2>Ficha do doador</h2>
+            </header>
 
-                <h3>Nome</h3>
-                <p> {doador.name} </p>
+            <section id="card" className="card p-4 col-sm-6 col-xl-4">
+                <p id="card-id" className="m-0">{doador.id}</p>
+                <h2>{doador.name}</h2>
+                <hr />
                 
-                <h3>Idade</h3>
-                <p> {doador.idade} </p>
+                <div className="card-info">
+                    <div className=" d-flex gap-5 m-3">
+                        <div>
+                            <h3 style={{fontSize: '1.3em'}}>Idade</h3>
+                            <p> {doador.idade} </p>
+                        </div>
+                    
+                        <div>
+                            <h3>E-mail</h3>
+                            <p> {doador.email} </p>
+                        </div>
+                    </div>
+                    
+                    <div className="m-3">
+                        <h3>Total Doado</h3>
+                        <p> R$ {doador.valor} </p>
+                    </div>
+                </div>
                 
-                <h3>E-mail</h3>
-                <p> {doador.email} </p>
+                <div className="card-btn m-2">
+                    <button className="btn btn-sm ">Editar Cadastro</button>
+                    <button className="btn btn-sm ">Adicionar doação</button>
+                </div>
                 
-                <h3>Valor Doado</h3>
-                <p> {doador.valor} </p>
+                <hr />
+                <div className="list-acao d-flex align-items">
+                    <h2>Ações</h2>
+                    <select name="List" id="" style={{border: 'none'}}></select>
+                </div>
                 
             </section>
         </div>
