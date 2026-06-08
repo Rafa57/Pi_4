@@ -25,17 +25,17 @@ function Doadores() {
     const [selecao, setSelecao] = useState(false);
 
     function menuSelect() {
-        setCheckBox(true)
+        setCheckBox(true);
         setCancel(true);
         setSelecao(true);
-    }
+    };
     
     function selCancel() {
         setCheckBox(false);
         setCancel(false);
         setSelecao(false);
         setListaSel([]);
-    }
+    };
 
     const [listaSel, setListaSel] = useState([]);
 
