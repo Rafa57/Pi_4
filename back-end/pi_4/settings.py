@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'home',
     'doadores',
     'acoes',
+    'doacoes',
 ]
 
 MIDDLEWARE = [

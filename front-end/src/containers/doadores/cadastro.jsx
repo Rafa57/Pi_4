@@ -90,7 +90,7 @@ function Cadastro() {
                     id="valor" 
                     type="number" 
                     step="0.01" 
-                    value={valor} 
+                    value={valor}
                     onChange={(e) => setValor(e.target.value)} 
                     required
                     className="form-control"

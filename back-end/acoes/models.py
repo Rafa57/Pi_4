@@ -1,32 +1,30 @@
 from django.db import models
+from django.db.models import Sum
 
 # Create your models here.
 
 class Acao(models.Model):
-    acao_id = models.AutoField(primary_key=True)
-    name = models.CharField(
-        blank=False,
-        null=False,
-        max_length=100
-    )
-    local = models.CharField(
-        null=False,
-        max_length=100
-    )
-    valor_esperado = models.DecimalField(
-        max_digits=10,
-        decimal_places=2
-    )
+    name = models.CharField(blank=False, null=False, max_length=100)
+    local = models.CharField(null=False, max_length=100)
+    data = models.DateTimeField(null=False, blank=False)
 
-def __str__(self):
-    return f"Nome: {self.name} | Local: {self.local} | Valor esperado: {self.valor_esperado}"
+    @property
+    def total_arrecadado(self):
+        total = self.doacoes_acao.aggregate(Sum('valor'))['valor__sum']
+        return total if total is not None else 0.0
+    
+    def __str__(self):
+        return self.name
 
-@classmethod
-def create_acao(cls, nome, local, valor_esperado):
-    acao = cls(
-        nome=nome,
-        local=local,
-        valor_esperado=valor_esperado
-    )
-    acao.save()
-    return acao
+# def __str__(self):
+#     return f"Nome: {self.name} | Local: {self.local} | Valor esperado: {self.valor_esperado}"
+
+# @classmethod
+# def create_acao(cls, nome, local, valor_esperado):
+#     acao = cls(
+#         nome=nome,
+#         local=local,
+#         valor_esperado=valor_esperado
+#     )
+#     acao.save()
+#     return acao
