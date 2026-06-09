@@ -6,39 +6,41 @@ import './style.css'
 
 function Cadastro() {
 
-
     const [nome, setNome] = useState('');
     const [idade, setIdade] = useState('');
     const [email, setEmail] = useState('');
-    const [valor, setValor] = useState('');
 
     const addDoador = (e) => {
         e.preventDefault();
+        const idadeNum = parseInt(idade)
+
+        if (idadeNum <= 0){
+            alert("Valores negativos ou zerados não são permitidos para a idade")
+            return
+        };
+        if (idadeNum < 18){
+            alert('O doador deve ter 18 anos ou mais.')
+            return
+        };
 
         let novoDoador = {
             name: nome,
-            idade: parseInt(idade),
-            email: email,
-            valor: parseFloat(valor)
+            idade: idadeNum,
+            email: email
         };
-        
+
         api.post('doadores/', novoDoador)
             .then(response => {
-                if (novoDoador['idade'] <= 0 || novoDoador['valor'] <= 0){
-                    alert('Valores negativo não são permitidos')
-                    return
-                };
-                if (novoDoador['idade'] < 18){
-                    alert('O doador deve ter 18 anos ou mais.')
-                    return
-                };
-                console.log('Cadastro realizado', response.data)
+                console.log('Cadastro realizado', response.data);
+                alert('Doador cadastrado com sucesso!');
                 setNome('');
                 setIdade('');
                 setEmail('');
-                setValor('');
             })
-            .catch(error => {console.error('Erro ao cadastrar', error)})
+            .catch(error => {
+                console.error('Erro ao cadastrar', error);
+                alert("Erro ao tentar realizar o cadastro");
+            });
     };
     
     return (
@@ -84,20 +86,10 @@ function Cadastro() {
                     className="form-control"
                 />
                 <br />
-
-                <label htmlFor="valor" className="form-label">Valor da doação (R$) </label>
-                <input 
-                    id="valor" 
-                    type="number" 
-                    step="0.01" 
-                    value={valor}
-                    onChange={(e) => setValor(e.target.value)} 
-                    required
-                    className="form-control"
-                />
-                <br />
-
-                <button type="submit" className="btn m-3 ms-0">Salvar Cadastro</button>
+                <hr/>
+                <div>
+                    <button type="submit" className="btn m-3 ms-0">Salvar Cadastro</button>
+                </div>
             </form>
 
         </div>

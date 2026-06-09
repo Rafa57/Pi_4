@@ -88,7 +88,6 @@ function Info() {
         )
     };
 
-
     return (
         <div id="info" className="p-4">
 
@@ -121,7 +120,7 @@ function Info() {
                 
                         <div className="m-3">
                             <h3>Total Doado</h3>
-                            <p> R$ {doador.valor} </p>
+                            <p> R$ {doador.valor_total} </p>
                         </div>
                     </div>
                 
