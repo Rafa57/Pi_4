@@ -81,7 +81,7 @@ function Doadores() {
     };
 
     return (
-        <div style={{ padding: '20px' }}>
+        <div id='lista-doadores' className='p-4'>
 
             <header className='header d-flex align-items' >
                 <h1 style={{display:'flex', alignItems:'center'}}>

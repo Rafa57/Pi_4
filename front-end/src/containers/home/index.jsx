@@ -14,7 +14,7 @@ function Home () {
             <nav className="navbar sticky-top p-3">
                 <img src="./dragao.png" alt="logo" id="logo-dg" />
                 <h1>Projeto Dragão</h1>
-                <button type="button" className="btn btn-primary mt-3" onClick={() => navigate('/doadores')}>Doadores</button>
+                <button type="button" className="btn mt-3" onClick={() => navigate('/doadores')}>Doadores</button>
             </nav>
             
             <section className="container mt-5">

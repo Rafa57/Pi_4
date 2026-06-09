@@ -90,15 +90,18 @@ function Info() {
 
 
     return (
-        <div id="info" className="info p-5">
+        <div id="info" className="p-4">
 
-            <header>
-                <Link to={'/doadores'} id="ficha-back" style={{textDecoration: 'none', color: '#666', fontSize: '20px', margin:'6px'}}>{'<voltar /'}</Link>
+            <div className="d-flex align-items">
+                <Link to={'/doadores'} className="back-link">
+                    <p>{'<voltar /'}</p>
+                </Link>
                 <h1>Ficha do doador</h1>
-            </header>
+            </div>
 
             <div className="d-flex gap-5">
-                <section id="card" className="card p-4 col-sm-6 col-xl-4">
+                <section id="card" className="card col-sm-6 col-xl-4">
+
                     <p id="card-id" className="m-0">{doador.id}</p>
                     <h2>{doador.name}</h2>
                     <hr />
@@ -106,7 +109,7 @@ function Info() {
                     <div className="card-info">
                         <div className=" d-flex gap-5 m-3">
                             <div>
-                                <h3 style={{fontSize: '1.3em'}}>Idade</h3>
+                                <h3>Idade</h3>
                                 <p> {doador.idade} </p>
                             </div>
                 

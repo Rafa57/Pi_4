@@ -7,6 +7,41 @@
     --cinza1: #666;
     --cinza2: #444;
 }
+h1 {
+    color: var(--azul3);
+    font-size: 2em;
+}
+h2 {
+    color: var(--azul3);
+    font-size: 1.5em;
+}
+h3 {
+    color: var(--azul3);
+    font-size: 1.3em;
+}
+.btn {
+    color: var(--branco);
+    background-color: var(--azul1);
+    border: 2px solid var(--azul1);
+}
+.btn:hover {
+    color: var(--azul3);
+    background-color: var(--branco) !important;
+    border: 2px solid var(--azul3);
+}
+.btn:active {
+    background-color: var(--azul1) !important;
+    border: 2px solid var(--azul2) !important;
+}
+.back-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #666;
+    font-Size: 20px;
+    margin:6px;
+}
+
 /* HOME */
 #home nav{
     background-color: var(--azul3) !important;
@@ -38,26 +73,18 @@ th {
     border-color: #ffffff !important;
     color: #fff !important;
 }
-
 .table-hover tbody tr:hover td{
     background-color: var(--azul2) !important;
 }
-
-.btn {
+#lista-doadores .btn {
     background-color: var(--azul3);
-    border: 2px solid transparent;
+    border: 2px solid #2b3a55;
 }
-
-.btn:hover {
-    background-color: var(--azul3);
-    border: 2px solid var(--azul2);
+#lista-doadores .btn:hover {
+    color: var(--branco);
+    border: 2px solid var(--branco);
+    background-color: var(--azul3) !important;
 }
-
-.btn:active {
-    background-color: var(--azul1) !important;
-    border: 2px solid var(--azul2) !important;
-}
-
 .i-check {
     display: flex;
     align-items: center;
@@ -66,7 +93,6 @@ th {
     margin: 0px 16px 0px 6px;
     transform: scale(1.2);
 }
-
 #qtd-sel {
     display: inline;
     align-self: center;
@@ -87,26 +113,19 @@ th {
     display: flex;
     align-items: center;
 }
-#info h1 {
-    color: var(--azul3);
-    font-size: 2em;
-}
-#info h2 {
-    color: var(--azul3);
-    font-size: 1.5em;
-}
 .card {
     background-color: var(--azul2);
     border: 1px solid var(--primaria);
-    padding: 15px;
+    padding: 2.5em;
     border-radius: 5px;
     margin-top: 15px;
+    width: fit-content;
 }
+
 #card-id {
     color: var(--cinza1);
     font-size: .9em;
 }
-
 .card hr {
     color: var(--azul3);
 }
@@ -141,4 +160,13 @@ select {
 #info form {
     background-color: var(--azul2);
     padding: 30px;
+}
+
+/* CADASTRO */
+#cadastro form {
+    font-size: 1.1em;
+    font-weight: 600;
+    background-color: var(--azul2);
+    padding: 30px;
+    max-width: 22em;
 }
