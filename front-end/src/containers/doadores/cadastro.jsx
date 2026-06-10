@@ -12,8 +12,17 @@ function Cadastro() {
 
     const addDoador = (e) => {
         e.preventDefault();
-        const idadeNum = parseInt(idade)
 
+        const idadeNum = parseInt(idade)
+        const verificarNome = () => {
+            const temNumChar = /^[a-zA-Zà-úÀ-Ú\s]+$/;
+            return temNumChar.test(nome);
+        };
+
+        if (!verificarNome) {
+            alert("O nome deve conter apenas letras e espaços");
+            return
+        };
         if (idadeNum <= 0){
             alert("Valores negativos ou zerados não são permitidos para a idade")
             return
@@ -24,7 +33,7 @@ function Cadastro() {
         };
 
         let novoDoador = {
-            name: nome,
+            name: nome.toUpperCase(),
             idade: idadeNum,
             email: email
         };
@@ -52,13 +61,13 @@ function Cadastro() {
                 <h1>Cadastrar Doador</h1>
             </div>
             
-            <form onSubmit={addDoador} method="post" className="form p-4">
+            <form onSubmit={addDoador} method="post" className="form p-4 shadow rounded">
 
                 <label htmlFor="nome" className="form-label">Nome</label>
                 <input 
                     type="text" 
                     id="nome" 
-                    value={nome} 
+                    value={nome.toUpperCase()} 
                     onChange={(e) => setNome(e.target.value)} 
                     required 
                     className="form-control" 

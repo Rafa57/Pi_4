@@ -1,0 +1,30 @@
+#home header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--azul3);
+    padding: 1em;
+}
+
+#home nav{
+    background-color: var(--azul3) !important;
+}
+#home nav button {
+    background-color: var(--azul1);
+}
+#home h1 {
+    color: var(--branco);
+}
+#home #logo-dg {
+    width: 5em;
+}
+#home #rodape {
+    display: flex;
+    justify-content: end;
+}
+#home .back-top {
+    margin-left: 100%;
+}
+#home .back-top:hover {
+    background-color: var(--azul3) !important;
+}

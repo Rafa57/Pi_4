@@ -8,15 +8,17 @@ import Home from './containers/home'
 import Doadores from './containers/doadores/index.jsx'
 import Cadastro from './containers/doadores/cadastro.jsx'
 import Info from './containers/doadores/info.jsx'
+import Acoes from './containers/acoes/index.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>} />
         <Route path="/doadores" element={<Doadores/>} />
         <Route path="/doadores/add" element={<Cadastro/>} />
         <Route path='/doadores/:id' element={<Info/>} />
+        <Route path='/addacao' element={<Acoes/>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

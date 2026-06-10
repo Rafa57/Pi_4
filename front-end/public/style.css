@@ -42,6 +42,27 @@ h3 {
     margin:6px;
 }
 
+/* HOME */
+#home nav{
+    background-color: var(--azul3) !important;
+}
+#home h1 {
+    color: var(--branco);
+}
+#logo-dg {
+    width: 5em;
+}
+#rodape {
+    display: flex;
+    justify-content: end;
+}
+#back-top {
+    margin-left: 100%;
+}
+#home nav button {
+    background-color: var(--azul1);
+}
+
 /* LISTA DE DOADORES */
 thead {
     border-collapse: collapse !important;

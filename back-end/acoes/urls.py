@@ -1,7 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 
-from . import views
+from rest_framework.routers import DefaultRouter
+from acoes.views import AcaoViewSet
+
+router = DefaultRouter()
+router.register(r'', AcaoViewSet)
 
 urlpatterns = [
-    path("", views.acoes, name="acoes"),
+    path("", include(router.urls))
 ]

@@ -99,7 +99,7 @@ function Info() {
             </div>
 
             <div className="d-flex gap-5">
-                <section id="card" className="card col-sm-6 col-xl-4">
+                <section id="card" className="card col-sm-6 col-xl-4 shadow-sm">
 
                     <p id="card-id" className="m-0">{doador.id}</p>
                     <h2>{doador.name}</h2>
@@ -120,7 +120,7 @@ function Info() {
                 
                         <div className="m-3">
                             <h3>Total Doado</h3>
-                            <p> R$ {doador.valor_total} </p>
+                            <p> R$ {doador.valor_total || 0.0} </p>
                         </div>
                     </div>
                 
@@ -137,7 +137,7 @@ function Info() {
                 </section>
                 {editForm && (
                     <div className="edit-form p-4">
-                        <form onSubmit={salvarEdit} className="d-block align-items">
+                        <form onSubmit={salvarEdit} className="d-block align-items shadow rounded">
                             <h2>Editar Cadastro</h2>
                             <hr />
                             <div className="mb-3">

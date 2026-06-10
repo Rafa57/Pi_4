@@ -125,7 +125,7 @@ function Doadores() {
                         <tr className='col'>
                             <th scope="col" style={{width: '30%'}}>ID</th>
                             <th scope="col" style={{width: '45%'}}>Nome</th>
-                            <th scope="col" style={{width: '25%'}}>Valor</th>
+                            <th scope="col" style={{width: '25%'}}>Total Doado</th>
                         </tr>
                     </thead>
 
@@ -157,7 +157,7 @@ function Doadores() {
                                 </td>
                                 
                                 <td> {doador.name} </td>
-                                <td> {doador.valor} </td>
+                                <td> R$ {doador.valor_total || 0.0} </td>
                             </tr>
                         ))}
 
