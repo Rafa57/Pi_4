@@ -83,7 +83,7 @@ function Info() {
         )
     };
     if(!doador){
-     return (
+        return (
             <div className="container mt-4" style={{padding:'20px'}}><p>Carregando...</p></div>   
         )
     };
@@ -187,4 +187,4 @@ function Info() {
     )
 };
 
-export default Info
+export default Info;

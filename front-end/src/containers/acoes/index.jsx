@@ -40,7 +40,7 @@ function Acoes() {
     };
 
     return (
-        <div id="add-acao">
+        <div id="add-acao" className="p-4">
             <div className="d-flex align-items">
                 <Link to={'/'} className="back-link">
                     <p>{'<voltar /'}</p>
@@ -80,7 +80,7 @@ function Acoes() {
                         className="form-control"
                         required
                     />
-
+                    <hr />
                     <div className="mt-4">
                         <button type="submit" className="btn">Salvar</button>
                     </div>

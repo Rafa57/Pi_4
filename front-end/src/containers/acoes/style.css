@@ -1,0 +1,33 @@
+/* CADASTRO */
+#add-acao {
+    height: 100vh;
+    background-color: var(--azul2);
+}
+#add-acao form {
+    color: var(--branco);
+    font-size: 1.1em;
+    font-weight: 600;
+    background-color: var(--azul3);
+    padding: 30px;
+    max-width: 22em;
+}
+#add-acao button {
+    background-color: var(--azul1);
+}
+#add-acao button:hover {
+    border: 2px solid var(--branco);
+}
+
+/* INFO ACAO */
+#info-acao {
+    justify-self: center;
+}
+#info-acao img {
+    width: 10rem;
+    height: 10rem;
+    margin-right: 2rem;
+    border-radius: 20px;
+}
+#info-acao .card {
+    width: 30rem;
+}

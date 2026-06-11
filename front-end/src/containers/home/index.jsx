@@ -22,6 +22,13 @@ function Home () {
         })
     }, []);
 
+    const dataFormatada = (dataISO) => {
+        return new Date(dataISO).toLocaleString('pt-BR', {
+            dateStyle: 'short',
+            timeStyle: 'short'
+        });
+    };
+
     return (
         <div id="home">
             
@@ -44,41 +51,38 @@ function Home () {
                 {erro && <p className="alert alert-danger">
                     {erro}    
                 </p>}
-
-                <div className="row g-4">
                     
-                    {/* <div className="col-12 col-md-6 col-lg-4">
-                        <div className="card h-100 shadow-sm">
-                            <img src="/acoes/igreja-matriz.webp" className="card-img-top" alt="acao.nome" />
-                            <div className="card-body d-flex flex-column">
-                                <h5 className="card-title">Nome da ação</h5>
-                                <p className="card-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit totam dolorem, excepturi voluptates error nobis consequatur, quas dolore libero ducimus similique unde deserunt quia modi exercitationem vel mollitia, ratione nostrum!</p>
-                            </div>
-                            <a href="#" className="btn btn-primary mt-auto">Ver Ação</a>
-                        </div>
-                    </div> */}
-
+                <div className="row g-4">
                     {acoes.map(acao => (
-                        <div className="col-12 col-md col-lg-4">
-                            <div className="card h-100 shadow-sm">
-                                <img src="/acoes/igreja-matriz.webp" alt='foto da ação' className="card-img-top" />
+                        
+                        <div key={acao.id} className="col-12 col-md-6 col-lg-4">
+                            <div className="card h-100 card-acao shadow-sm">
+                                <img 
+                                    src={acao.imagem ? acao.imagem : "/acoes/igreja-matriz.webp"} 
+                                    alt={acao.name} 
+                                    className="card-img-top shadow-sm" 
+                                    style={{ objectFit: 'cover', height: '200px' }}
+                                />
                                 <div className="card-body d-flex flex-column">
-                                    <h5 className="card-title">{acao.name}</h5>
-                                    <p className="card-text text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro voluptatem quam hic, cum magni molestiae ut molestias? Est quaerat quisquam cupiditate. Sequi excepturi quaerat rem, a natus magnam ad ullam?</p>
+                                    <h5 className="card-title acao-title">{acao.name}</h5>
+                                    <p className="card-text">
+                                        {dataFormatada(acao.data)}
+                                    </p>
                                 </div>
-                                <a href="#" className="btn">Ver Ação</a>
+                                <button onClick={() => navigate(`/addacao/${acao.id}`)} className="btn">
+                                    Detalhes
+                                </button>
                             </div>
                         </div>
                     ))}
-                    
                 </div>
             </section>
 
-            <div id="rodape">
-                <a href="#" className="back-top btn m-3">
+            <footer id="rodape" className="mb-0">
+                <a href="#" className="back-top btn m-4">
                     <img src="/top-page.svg" alt="" />
                 </a>
-            </div>
+            </footer>
         </div>
     )
 };

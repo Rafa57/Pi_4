@@ -1,0 +1,7 @@
+# Ignorar ambiente virtual do Python
+back-end/.venv/
+.venv/
+venv/
+
+# Ignorar pastas de dependências do React
+front-end/node_modules/

@@ -5,7 +5,6 @@
     background-color: var(--azul3);
     padding: 1em;
 }
-
 #home nav{
     background-color: var(--azul3) !important;
 }
@@ -15,8 +14,24 @@
 #home h1 {
     color: var(--branco);
 }
+#home h2 {
+    font-size: 2em;
+}
 #home #logo-dg {
     width: 5em;
+}
+#home .card-acao {
+    color: var(--azul3);
+    background-color: var(--azul2);
+}
+#home .acao-title {
+    font-size: 1.4em;
+}
+/* #home .card img {
+    border: 10px solid var(--azul3);
+} */
+#home .descricao {
+    color: var(--branco) !important;
 }
 #home #rodape {
     display: flex;

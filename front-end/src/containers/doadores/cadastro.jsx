@@ -61,7 +61,7 @@ function Cadastro() {
                 <h1>Cadastrar Doador</h1>
             </div>
             
-            <form onSubmit={addDoador} method="post" className="form p-4 shadow rounded">
+            <form onSubmit={addDoador} className="form p-4 shadow rounded">
 
                 <label htmlFor="nome" className="form-label">Nome</label>
                 <input 

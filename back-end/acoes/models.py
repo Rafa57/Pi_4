@@ -7,6 +7,8 @@ class Acao(models.Model):
     name = models.CharField(blank=False, null=False, max_length=100)
     local = models.CharField(null=False, max_length=100)
     data = models.DateTimeField(null=False, blank=False)
+    imagem = models.ImageField(upload_to={'acoes_fotos/'}, null=True, blank=True)
+    descricao = models.CharField(max_length=200, blank=True, null=True)
 
     @property
     def total_arrecadado(self):
