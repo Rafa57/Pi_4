@@ -31,6 +31,10 @@ function Cadastro() {
             alert('O doador deve ter 18 anos ou mais.')
             return
         };
+        if (idadeNum > 150) {
+            alert("A idade não pode ultrapassar 150 anos!")
+            return
+        };
 
         let novoDoador = {
             name: nome.toUpperCase(),

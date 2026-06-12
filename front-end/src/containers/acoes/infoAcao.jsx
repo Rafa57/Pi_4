@@ -29,6 +29,21 @@ function InfoAcao() {
         })
     }, [id]);
 
+    const delAcao = async () => {
+        const confirmDel = window.confirm(`Tem certeza que quer deletar a ação: ${acao.name}`);
+
+        if (confirmDel) {
+            try{
+                api.delete(`acoes/${id}/`);
+                alert("Ação excluída com sucesso! Voltando para a pagina inicial...");
+                navigate(`/`);
+            } catch (error) {
+                console.error("Erro ao tentar excluir", error);
+                alert('Erro ao tentar excluir ação');
+            };
+        };
+    };
+
     const editando = () => {
         setEditForm(true);
     };
@@ -109,8 +124,9 @@ function InfoAcao() {
                             <h3>Total Arrecadado</h3>
                             <p>R$ {acao.total_arrecadado || 0.0}</p>
                         </div>
-                        <div>
+                        <div className="card-buttons d-flex gap-3">
                             <button onClick={editando} className="btn">Editar Ação</button>
+                            <button onClick={delAcao} className="btn">Apagar Ação</button>
                         </div>
                     </div>
                     <hr />

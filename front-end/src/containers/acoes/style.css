@@ -31,3 +31,7 @@
 #info-acao .card {
     width: 30rem;
 }
+#info-acao .card-buttons {
+    justify-self: center;
+    margin: 2em;
+}

@@ -18,9 +18,13 @@ function Acoes() {
             alert('A data da ação deve estar no futuro.')
             return
         };
+        if (dataDigitada > dataAtual.setFullYear(dataAtual.getFullYear() + 10)) {
+            alert("A ação não pode ultrapassar 10 anos da data atual")
+            return
+        };
 
         let novaAcao = {
-            name: nomeAcao,
+            name: nomeAcao.toUpperCase(),
             local: localAcao,
             data: dataAcao
         };
@@ -55,7 +59,7 @@ function Acoes() {
                     <input 
                         id="nome-acao" 
                         type="text" 
-                        value={nomeAcao} 
+                        value={nomeAcao.toUpperCase()} 
                         onChange={(e) => setNomeAcao(e.target.value)} 
                         className="form-control"
                         required

@@ -6,6 +6,7 @@ from acoes.models import Acao
 
 class Doacao(models.Model):
     doador = models.ForeignKey(Doador, on_delete=models.CASCADE, related_name='doacoes')
+    
     acao = models.ForeignKey(Acao, on_delete=models.CASCADE, related_name='doacoes_acao')
 
     valor = models.DecimalField(max_digits=10, decimal_places=2)
