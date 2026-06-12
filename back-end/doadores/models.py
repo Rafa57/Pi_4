@@ -16,8 +16,8 @@ class Doador(models.Model):
 
     @property
     def valor_total(self):
-        total = self.doacoes.aggregate(Sum('valor')['valor__sum'])
-        return total if total is not None else 0.0
+        total = self.doacoes.aggregate(Sum('valor'))['valor__sum']
+        return float(total) if total is not None else 0.0
 
     def __str__(self):
         return self.name

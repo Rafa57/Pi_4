@@ -217,7 +217,7 @@ function Info() {
                 
                         <div className="m-3">
                             <h3>Total Doado</h3>
-                            <p> R$ {doador.valor_total || 0.0} </p>
+                            <p> R$ {doacoesFiltradas.reduce((total, doacao) => total + parseFloat(doacao.valor), 0).toFixed(2)} </p>
                         </div>
                     </div>
                 
