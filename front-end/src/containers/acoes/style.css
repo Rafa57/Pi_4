@@ -29,9 +29,8 @@
     border-radius: 20px;
 }
 #info-acao .card {
-    width: 30rem;
+    width: 50rem;
 }
 #info-acao .card-buttons {
-    justify-self: center;
     margin: 2em;
 }

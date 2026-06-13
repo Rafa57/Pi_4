@@ -58,9 +58,9 @@ function Home () {
                         <div key={acao.id} className="col-12 col-md-6 col-lg-4">
                             <div className="card h-100 card-acao shadow-sm">
                                 <img 
-                                    src={acao.imagem ? acao.imagem : "/acoes/igreja-matriz.webp"} 
+                                    src={acao.imagem ? acao.imagem : "/acoes/imagem-padrao.png"} 
                                     alt={acao.name} 
-                                    className="card-img-top shadow-sm" 
+                                    className="card-img-top"
                                     style={{ objectFit: 'cover', height: '200px' }}
                                 />
                                 <div className="card-body d-flex flex-column">

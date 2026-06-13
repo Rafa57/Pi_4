@@ -144,7 +144,7 @@ function Info() {
         };
 
         api.post('doacoes/', novaDoacao)
-            .then(response => {
+            .then(() => {
                 alert('Doação registrada com sucesso');
                 setValorDoacao('');
                 setDoacaoSelect('');
